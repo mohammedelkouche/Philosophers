@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "__threading_support": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}

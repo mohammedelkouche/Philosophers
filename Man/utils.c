@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/09 13:50:19 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/04/09 14:37:46 by mel-kouc         ###   ########.fr       */
+/*   Created: 2023/04/09 13:50:55 by mel-kouc          #+#    #+#             */
+/*   Updated: 2023/04/09 13:51:03 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int argc, char **argv)
+int	ft_atoi(char *str)
 {
-	t_philosophers	init;
+	int	i;
+	int	sign;
+	int	res;
 
-	if (argc == 6 || argc == 5)
+	i = 0;
+	sign = 1;
+	res = 0;
+	while (str[i] >= 9 && str[i] <= 13)
+		i++;
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		init_args(&init, argc, argv);
+		res = res * 10 + str[i] - '0';
+		i++;
 	}
-	else
-		printf("error\n");
+	return (sign * res);
 }
