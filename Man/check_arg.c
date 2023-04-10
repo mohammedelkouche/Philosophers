@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/09 13:50:19 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/04/09 22:26:16 by mel-kouc         ###   ########.fr       */
+/*   Created: 2023/04/09 17:54:16 by mel-kouc          #+#    #+#             */
+/*   Updated: 2023/04/09 22:27:13 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int argc, char **argv)
+int	check_arg(int argc, char **argv)
 {
-	t_philosophers	init;
+	int	i;
+	int	j;
 
-	if (argc == 6 || argc == 5)
+	(void) argc;
+	i = 0;
+	while (argv[++i])
 	{
-		if (!check_arg(argc, argv) || !init_args(&init, argc, argv))
+		j = -1;
+		while (argv[i][++j])
 		{
-			printf("error\n");
-			return (0);
+			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
+				return (0);
 		}
-		printf("hello");
 	}
-	else
-		printf("error\n");
+	return (1);
 }

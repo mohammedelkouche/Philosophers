@@ -6,13 +6,13 @@
 #    By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/08 14:51:37 by mel-kouc          #+#    #+#              #
-#    Updated: 2023/04/09 14:01:18 by mel-kouc         ###   ########.fr        #
+#    Updated: 2023/04/09 18:30:28 by mel-kouc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philosophers
 
-SRC = Man/main.c Man/utils.c Man/init_args.c
+SRC = Man/main.c Man/utils.c Man/init_args.c Man/check_arg.c
 
 OSRC = $(SRC:.c=.o)
 
