@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:50:55 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/04/28 19:18:43 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/04/29 16:59:12 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,35 @@ int	ft_atoi(char *str)
 	return (sign * res);
 }
 
-// s_philos	*ft_lstnew(int id, t_info *args)
-// {
-// 	s_philos	*new_node;
+t_philos	*ft_lstlast(t_philos *lst)
+{
+	if (!lst)
+		return (0);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
+}
 
-// 	new_node = (s_philos *)malloc(sizeof(s_philos));
-// 	if (!new_node)
-// 		return (NULL);
-// 	new_node->id = id;
-// 	new_node->args =args;
-// 	new_node->next = NULL; //new_node->next = new_node
-// 	return (new_node);
-// }
+t_philos	*ft_lstnew(int id, t_info *info)
+{
+	t_philos	*new_node;
+
+	new_node = (t_philos *)malloc(sizeof(t_philos));
+	if (!new_node)
+		return (NULL);
+	new_node->id = id;
+	new_node->args = info;
+	new_node->next = NULL; //new_node->next = new_node
+	return (new_node);
+}
+
+
+void	ft_lst_addback(t_philos **head, t_philos *new)
+{
+	if (!head || !new)
+		return ;
+	else if (*head == 0)
+		*head = new;
+	else
+		ft_lstlast(*head)->next = new;
+}

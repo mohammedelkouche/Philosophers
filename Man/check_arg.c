@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:54:16 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/04/28 19:16:48 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/04/29 10:02:59 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int	check_arg(char **argv)
 	return (1);
 }
 
-int	check_value(t_info *philo)
+int	check_value(t_info *info)
 {
-	if (philo->nb_philo < 1 || philo->time_die < 1 || philo->time_eat < 1
-		|| philo->time_sleep < 1 || philo->nb_philo > 200)
+	if (info->nb_info < 1 || info->time_die < 1 || info->time_eat < 1
+		|| info->time_sleep < 1 || info->nb_info > 200)
 		return (0);
-	if (philo->time_die < 60 || philo->time_eat < 60 || philo->time_sleep < 60
-		|| philo->nb_philo > 200)
+	if (info->time_die < 60 || info->time_eat < 60 || info->time_sleep < 60
+		|| info->nb_philo > 200)
 		return (0);
 	return (1);
 }
