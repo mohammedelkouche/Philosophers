@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 14:14:49 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/04/29 16:55:05 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:59:24 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 // struct	s_attribute;
 
@@ -32,7 +33,7 @@ typedef struct s_philos {
 	int				id;
 	pthread_t		thread;
 	pthread_mutex_t	fork;
-	struct t_info	*args;
+	struct s_info	*args;
 	struct s_philos	*next;
 }	t_philos;
 
@@ -42,7 +43,9 @@ int			check_arg(char **argv);
 int			check_value(t_info *philo);
 t_philos	*create_list(t_philos *head, t_info *info);
 t_philos	*ft_lstnew(int id, t_info *info);
-void	ft_lst_addback(t_philos **head, t_philos *new);
-
+void		ft_lst_addback(t_philos **head, t_philos *new);
+t_philos	*ft_lstlast(t_philos *lst);
+void		init_thread(t_philos *head, t_info *info);
+void		*procedure(void *ptr);
 
 #endif

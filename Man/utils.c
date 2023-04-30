@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:50:55 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/04/29 16:59:12 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/04/30 14:20:31 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,22 @@ t_philos	*ft_lstnew(int id, t_info *info)
 		return (NULL);
 	new_node->id = id;
 	new_node->args = info;
-	new_node->next = NULL; //new_node->next = new_node
+	new_node->next = NULL;
 	return (new_node);
 }
 
 
 void	ft_lst_addback(t_philos **head, t_philos *new)
 {
+	t_philos	*last;
+
 	if (!head || !new)
 		return ;
 	else if (*head == 0)
 		*head = new;
 	else
-		ft_lstlast(*head)->next = new;
+	{
+		last = ft_lstlast(*head);
+		last->next = new;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:50:19 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/04/29 17:01:19 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:34:51 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_info		*info;
-	t_philos	*list;
 	t_philos	*head;
 
 	head = NULL;
@@ -28,14 +27,17 @@ int	main(int argc, char **argv)
 			free(info);
 			return (0);
 		}
-	list = create_list(head, info);
-		printf("hello");
+	head = create_list(head, info);
+	init_thread(head, info);
+	// while(head)
+	// {
+	// 	printf("%d\t", head->id);
+	// 	head = head->next;
+	// 	if(head->id == 1)
+	// 		break;
+	// }
+	printf("hello");
 	}
 	else
 		printf("error\n");
-	//************************
-	// philosophers // is the head of the list
-	// 1 -- N-philo // index will pass to fl_sltnew as id of philo
-	// send(args); // shared data or args
-	//**************************
 }
