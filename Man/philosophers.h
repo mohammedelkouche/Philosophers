@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 14:14:49 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/04/30 17:59:24 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/01 21:43:54 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <sys/time.h>
 
 // struct	s_attribute;
 
@@ -25,6 +26,7 @@ typedef struct s_info {
 	int					nb_philo;
 	int					time_die;
 	int					time_eat;
+	long long			init_time;
 	int					time_sleep;
 	int					nb_eat;
 }	t_info;
@@ -35,6 +37,7 @@ typedef struct s_philos {
 	pthread_mutex_t	fork;
 	struct s_info	*args;
 	struct s_philos	*next;
+	pthread_mutex_t	print;
 }	t_philos;
 
 int			ft_atoi(char *str);
@@ -47,5 +50,9 @@ void		ft_lst_addback(t_philos **head, t_philos *new);
 t_philos	*ft_lstlast(t_philos *lst);
 void		init_thread(t_philos *head, t_info *info);
 void		*procedure(void *ptr);
+void		eat_function(t_philos *philo);
+void		sleep_function(t_philos *philo);
+void		think_function(t_philos *philo);
+long long	time_stamp(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:03:31 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/04/30 18:01:44 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/01 21:42:09 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@ void	*procedure(void *ptr)
 {
 	t_philos	*philo;
 
+	philo =  (t_philos *)ptr;
 	if (philo->id % 2 == 0)
 		usleep(1000);
 	while (1)
 	{
 		eat_function(philo);
-		sleep_function();
-		think_function();
+		sleep_function(philo);
+		think_function(philo);
 	}
+	return (NULL);
 }
 
 void	init_thread(t_philos *head, t_info *info)
@@ -48,10 +50,17 @@ void	init_thread(t_philos *head, t_info *info)
 
 	i = -1;
 	tmp = head;
+	info->init_time = time_stamp();
 	while (++i < info->nb_philo)
 	{
-		pthread_mutex_init(tmp->fork, NULL);
-		pthread_create(&tmp->thread, NULL, &procedure, NULL);
+		pthread_mutex_init(&tmp->fork, NULL);
+		pthread_create(&tmp->thread, NULL, &procedure, tmp);
+		tmp = tmp->next;
+	}
+	i = -1;
+	while (++i < info->nb_philo)
+	{
+		pthread_join(tmp->thread, NULL);
 		tmp = tmp->next;
 	}
 }

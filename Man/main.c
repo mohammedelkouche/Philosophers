@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:50:19 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/04/30 15:34:51 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:24:26 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	main(int argc, char **argv)
 	// 	if(head->id == 1)
 	// 		break;
 	// }
-	printf("hello");
 	}
 	else
 		printf("error\n");

@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:50:55 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/04/30 14:20:31 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/01 21:36:13 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,14 @@ void	ft_lst_addback(t_philos **head, t_philos *new)
 		last = ft_lstlast(*head);
 		last->next = new;
 	}
+}
+
+long long	time_stamp(void)
+{
+	long long			time;
+	struct timeval		currant_time;
+
+	gettimeofday(&currant_time, NULL);
+	time = (currant_time.tv_sec * 1000 + currant_time.tv_usec / 1000);
+	return (time);
 }
