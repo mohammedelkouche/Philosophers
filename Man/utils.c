@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:50:55 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/01 21:36:13 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/02 16:56:54 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,13 @@ void	ft_lst_addback(t_philos **head, t_philos *new)
 		last = ft_lstlast(*head);
 		last->next = new;
 	}
+}
+
+void	wait_action(long long begin, int action)
+{
+
+	while (time_stamp() - begin < action)
+		usleep(1);
 }
 
 long long	time_stamp(void)

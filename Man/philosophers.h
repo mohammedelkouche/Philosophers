@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 14:14:49 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/01 21:43:54 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/02 17:59:16 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_philos {
 	struct s_info	*args;
 	struct s_philos	*next;
 	pthread_mutex_t	print;
+	int				count_eat;
+	long long		tlast_eat;
 }	t_philos;
 
 int			ft_atoi(char *str);
@@ -54,5 +56,7 @@ void		eat_function(t_philos *philo);
 void		sleep_function(t_philos *philo);
 void		think_function(t_philos *philo);
 long long	time_stamp(void);
+void		wait_action(long long begin, int action);
+int			checl_is_dead(t_philos *philo);
 
 #endif

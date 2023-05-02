@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:03:31 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/01 21:42:09 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/02 17:59:09 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	*procedure(void *ptr)
 		eat_function(philo);
 		sleep_function(philo);
 		think_function(philo);
+		// if (!checl_is_dead(philo))
+		// 	break ;
 	}
 	return (NULL);
 }
@@ -63,4 +65,7 @@ void	init_thread(t_philos *head, t_info *info)
 		pthread_join(tmp->thread, NULL);
 		tmp = tmp->next;
 	}
+	head->count_eat = 0;
 }
+
+
