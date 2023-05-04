@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:03:31 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/02 17:59:09 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:59:55 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	*procedure(void *ptr)
 {
 	t_philos	*philo;
 
-	philo =  (t_philos *)ptr;
+	philo = (t_philos *)ptr;
+	philo->tlast_eat = time_stamp();
 	if (philo->id % 2 == 0)
 		usleep(1000);
 	while (1)
@@ -39,8 +40,11 @@ void	*procedure(void *ptr)
 		eat_function(philo);
 		sleep_function(philo);
 		think_function(philo);
-		// if (!checl_is_dead(philo))
-		// 	break ;
+		// usleep(1000);
+		// if (check_nb_eat(philo))
+		// 	break;
+		// if(philo->count_eat == philo->args->nb_eat)
+		// 	return (NULL);
 	}
 	return (NULL);
 }
@@ -52,7 +56,7 @@ void	init_thread(t_philos *head, t_info *info)
 
 	i = -1;
 	tmp = head;
-	info->init_time = time_stamp();
+	tmp->args->init_time = time_stamp();
 	while (++i < info->nb_philo)
 	{
 		pthread_mutex_init(&tmp->fork, NULL);
@@ -60,12 +64,19 @@ void	init_thread(t_philos *head, t_info *info)
 		tmp = tmp->next;
 	}
 	i = -1;
+	tmp = head;
 	while (++i < info->nb_philo)
 	{
-		pthread_join(tmp->thread, NULL);
+		pthread_detach(tmp->thread);
 		tmp = tmp->next;
 	}
-	head->count_eat = 0;
+	check_is_dead(head);
+	// while (1)
+	// {
+	// 	usleep(1000);
+	// 	if (!check_is_dead(head))
+	// 		break ;
+	// }
 }
 
 
