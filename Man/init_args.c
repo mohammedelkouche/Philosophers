@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:03:31 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/04 15:59:55 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/04 21:19:34 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,18 @@ void	init_thread(t_philos *head, t_info *info)
 	{
 		pthread_mutex_init(&tmp->fork, NULL);
 		pthread_create(&tmp->thread, NULL, &procedure, tmp);
-		tmp = tmp->next;
-	}
-	i = -1;
-	tmp = head;
-	while (++i < info->nb_philo)
-	{
 		pthread_detach(tmp->thread);
+
 		tmp = tmp->next;
 	}
-	check_is_dead(head);
-	// while (1)
+	// i = -1;
+	// tmp = head;
+	// while (++i < info->nb_philo)
 	// {
-	// 	usleep(1000);
-	// 	if (!check_is_dead(head))
-	// 		break ;
+		// pthread_detach(tmp->thread);
+	// 	tmp = tmp->next;
 	// }
+	check_is_dead(head);
 }
 
 

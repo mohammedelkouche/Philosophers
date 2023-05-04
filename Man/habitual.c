@@ -6,11 +6,20 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:32:40 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/04 16:49:17 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:04:48 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+void	action_print(t_philos *philo, char *str)
+{
+	pthread_mutex_lock(&philo->print);
+	printf("%lld\t %d\t %s\n", \
+	time_stamp() - philo->args->init_time,
+		philo->id, str);
+	pthread_mutex_unlock(&philo->print);
+}
 
 void	eat_function(t_philos *philo)
 {
@@ -18,21 +27,13 @@ void	eat_function(t_philos *philo)
 
 	pthread_mutex_lock(&philo->fork);
 
-	pthread_mutex_lock(&philo->print);
-	printf("%lld\t %d\thas taken a fork\n", \
-	time_stamp() - philo->args->init_time, philo->id);
-	pthread_mutex_unlock(&philo->print);
+	action_print(philo, "has taken a fork");
 
 	pthread_mutex_lock(&philo->next->fork);
 
-	pthread_mutex_lock(&philo->print);
-	printf("%lld\t %d\thas taken a fork\n", \
-	time_stamp() - philo->args->init_time, philo->id);
-	pthread_mutex_unlock(&philo->print);
+	action_print(philo, "has taken a fork");
 
-	pthread_mutex_lock(&philo->print);
-	printf("%lld\t %d\tis eating\n", \
-	time_stamp() - philo->args->init_time, philo->id);
+	action_print(philo, "is eating");
 
 	begin = time_stamp();
 
@@ -42,7 +43,6 @@ void	eat_function(t_philos *philo)
 
 	philo->count_eat++;
 
-	pthread_mutex_unlock(&philo->print);
 	pthread_mutex_unlock(&philo->fork);
 	pthread_mutex_unlock(&philo->next->fork);
 }
@@ -82,6 +82,14 @@ int	check_nb_eat(t_philos *head)
 	return (1);
 }
 
+void	test(void)
+{
+	long long	begin;
+
+	begin = time_stamp();
+	while (time_stamp() - begin < 1000)
+		usleep(1);
+}
 void	check_is_dead(t_philos *philo)
 {
 	t_philos	*tmp;
@@ -90,10 +98,11 @@ void	check_is_dead(t_philos *philo)
 	tmp = philo;
 	i = 0;
 	while (1)
-	{	
-		usleep(1000);
+	{
+		// usleep(1000);
+		test();
 		i = 0;
-	
+
 		while (i < philo->args->nb_philo)
 		{
 			// if (tmp->count_eat == tmp->args->nb_eat)
