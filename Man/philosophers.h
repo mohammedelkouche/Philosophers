@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 14:14:49 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/03 18:39:21 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/05 18:51:45 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,13 @@ void		eat_function(t_philos *philo);
 void		sleep_function(t_philos *philo);
 void		think_function(t_philos *philo);
 long long	time_stamp(void);
+void		action_print(t_philos *philo, char *str);
 void		wait_action(long long begin, int action);
+// void		check_is_dead(t_philos *philo);
+int			check_is_dead(t_philos *philo, t_philos *tmp, int i);
+int			check_nb_eat(t_philos *head);
+void		stay(void);
+void		free_all(t_philos *philo);
 // int			check_is_dead(t_philos *philo);
-void			check_is_dead(t_philos *philo);
-int	check_nb_eat(t_philos *head);
 
 #endif

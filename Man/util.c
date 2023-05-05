@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:50:55 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/04 21:28:03 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/05 18:13:10 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,11 @@ void	ft_lst_addback(t_philos **head, t_philos *new)
 	}
 }
 
-void	wait_action(long long begin, int action)
+void	action_print(t_philos *philo, char *str)
 {
-	while (time_stamp() - begin < action)
-		usleep(1);
-}
-
-long long	time_stamp(void)
-{
-	long long			time;
-	struct timeval		currant_time;
-
-	gettimeofday(&currant_time, NULL);
-	time = ((currant_time.tv_sec * 1000) + (currant_time.tv_usec / 1000));
-	return (time);
+	pthread_mutex_lock(&philo->print);
+	printf("%lld\t %d\t %s\n", \
+	time_stamp() - philo->args->init_time,
+		philo->id, str);
+	pthread_mutex_unlock(&philo->print);
 }

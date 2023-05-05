@@ -6,17 +6,23 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:50:19 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/03 18:59:44 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/05 22:28:41 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+// void	tst(void)
+// {
+// 	system("leaks philosophers");
+// }
 
 int	main(int argc, char **argv)
 {
 	t_info		*info;
 	t_philos	*head;
 
+	// atexit(tst);
 	head = NULL;
 	info = malloc(sizeof(t_info));
 	if (argc == 6 || argc == 5)
