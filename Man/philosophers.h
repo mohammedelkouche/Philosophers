@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 14:14:49 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/05 18:51:45 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/07 15:13:07 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ typedef struct s_info {
 	int					time_eat;
 	long long			init_time;
 	int					time_sleep;
+	pthread_mutex_t		mt_eat;
 	int					nb_eat;
+	pthread_mutex_t		print;
 }	t_info;
 
 typedef struct s_philos {
@@ -37,9 +39,10 @@ typedef struct s_philos {
 	pthread_mutex_t	fork;
 	struct s_info	*args;
 	struct s_philos	*next;
-	pthread_mutex_t	print;
 	int				count_eat;
+	pthread_mutex_t	mt_count;
 	long long		tlast_eat;
+	pthread_mutex_t	ml_eat;
 }	t_philos;
 
 int			ft_atoi(char *str);
@@ -59,7 +62,7 @@ long long	time_stamp(void);
 void		action_print(t_philos *philo, char *str);
 void		wait_action(long long begin, int action);
 // void		check_is_dead(t_philos *philo);
-int			check_is_dead(t_philos *philo, t_philos *tmp, int i);
+int			check_is_dead(t_philos *philo, int i);
 int			check_nb_eat(t_philos *head);
 void		stay(void);
 void		free_all(t_philos *philo);

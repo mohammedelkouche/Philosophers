@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:50:55 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/05 18:13:10 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/07 16:04:54 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void	ft_lst_addback(t_philos **head, t_philos *new)
 
 void	action_print(t_philos *philo, char *str)
 {
-	pthread_mutex_lock(&philo->print);
-	printf("%lld\t %d\t %s\n", \
+	pthread_mutex_lock(&philo->args->print);
+	printf("%lld\t %d\t%s\n", \
 	time_stamp() - philo->args->init_time,
 		philo->id, str);
-	pthread_mutex_unlock(&philo->print);
+	pthread_mutex_unlock(&philo->args->print);
 }

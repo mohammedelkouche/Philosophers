@@ -6,7 +6,7 @@
 #    By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/08 14:51:37 by mel-kouc          #+#    #+#              #
-#    Updated: 2023/05/05 15:13:31 by mel-kouc         ###   ########.fr        #
+#    Updated: 2023/05/07 17:04:45 by mel-kouc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ OSRC = $(SRC:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS =   -Wall -Wextra -Werror  
+# -g-fsanitize=thread
+
 
 all: $(NAME)
 
