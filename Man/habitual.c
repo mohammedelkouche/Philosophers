@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:32:40 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/07 17:18:08 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:49:31 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,23 @@ void	sleep_function(t_philos *philo)
 {
 	// long long	begin;
 
-	pthread_mutex_lock(&philo->args->print);
-	printf("%lld\t %d\tis sleeping\n", \
-	time_stamp() - philo->args->init_time, philo->id);
+	// pthread_mutex_lock(&philo->args->print);
+	// printf("%lld\t %d\tis sleeping\n", \
+	// time_stamp() - philo->args->init_time, philo->id);
+	action_print(philo, "is sleeping");
 	// begin = time_stamp();
 	wait_action(time_stamp(), philo->args->time_sleep);
-	pthread_mutex_unlock(&philo->args->print);
+	// pthread_mutex_unlock(&philo->args->print);
 }
 
 void	think_function(t_philos *philo)
 {
-	pthread_mutex_lock(&philo->args->print);
-	printf("%lld\t %d\tis thinking\n", \
-	time_stamp() - philo->args->init_time, philo->id);
-	pthread_mutex_unlock(&philo->args->print);
+	// pthread_mutex_lock(&philo->args->print);
+	// printf("%lld\t %d\tis thinking\n", \
+	// time_stamp() - philo->args->init_time, philo->id);
+	action_print(philo, "is thinking");
+	
+	// pthread_mutex_unlock(&philo->args->print);
 }
 
 int	check_nb_eat(t_philos *head)
@@ -86,14 +89,8 @@ int	check_nb_eat(t_philos *head)
 
 int	check_is_dead(t_philos *philo, int i)
 {
-
 	long long	t;
 
-	usleep(1000);
-	pthread_mutex_lock(&philo->ml_eat);
-	t = philo->tlast_eat;
-	// printf("%lld\n", time_stamp() - t);
-	pthread_mutex_unlock(&philo->ml_eat);
 	while (i < philo->args->nb_philo)
 	{
 		if (check_nb_eat(philo))
@@ -101,12 +98,14 @@ int	check_is_dead(t_philos *philo, int i)
 			free_all(philo);
 			return (0);
 		}
+		pthread_mutex_lock(&philo->ml_eat);
+		t = philo->tlast_eat;
+		pthread_mutex_unlock(&philo->ml_eat);
 		if (time_stamp() - t > philo->args->time_die)
 		{
 			pthread_mutex_lock(&philo->args->print);
-			printf("%lld\t|%d|\tdied\n", \
+			printf("%lld\t %d\tdied\n", \
 			time_stamp() - philo->args->init_time, philo->id);
-			// pthread_mutex_unlock(&philo->args->print);
 			free_all(philo);
 			return (0);
 		}
@@ -145,30 +144,4 @@ int	check_is_dead(t_philos *philo, int i)
 // 			i++;
 // 		}
 // 	}
-// }
-
-
-// int	check_is_dead(t_philos *philo)
-// {
-// 	t_philos	*tmp;
-// 	int			i;
-
-// 	i = 0;
-// 	tmp = philo;
-// 	while (i < philo->args->nb_philo)
-// 	{
-// 		if (philo->count_eat == philo->args->nb_eat)
-// 			return (0);
-// 		if (time_stamp() - philo->tlast_eat > philo->args->time_die)
-// 		{
-// 			pthread_mutex_lock(&philo->print);
-// 			printf("%lld\t %d\tdied\n", \
-// 			time_stamp() - philo->args->init_time, philo->id);
-// 			// pthread_mutex_unlock(&philo->print);
-// 			return (0);
-// 		}
-// 		i++;
-// 		tmp = tmp->next;
-// 	}
-// 	return (1);
 // }
