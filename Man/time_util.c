@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:21:23 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/08 18:50:44 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:52:58 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ long long	time_stamp(void)
 	time = ((currant_time.tv_sec * 1000) + (currant_time.tv_usec / 1000));
 	return (time);
 }
-

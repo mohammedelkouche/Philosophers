@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:32:40 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/08 18:49:31 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:46:49 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	eat_function(t_philos *philo)
 {
-	// long long	begin;
-
 	pthread_mutex_lock(&philo->fork);
 	action_print(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->next->fork);
@@ -23,7 +21,6 @@ void	eat_function(t_philos *philo)
 	
 	action_print(philo, "is eating");
 	
-	// begin = time_stamp();
 	wait_action(time_stamp(), philo->args->time_eat);
 	
 	pthread_mutex_lock(&philo->ml_eat);
@@ -40,25 +37,13 @@ void	eat_function(t_philos *philo)
 
 void	sleep_function(t_philos *philo)
 {
-	// long long	begin;
-
-	// pthread_mutex_lock(&philo->args->print);
-	// printf("%lld\t %d\tis sleeping\n", \
-	// time_stamp() - philo->args->init_time, philo->id);
 	action_print(philo, "is sleeping");
-	// begin = time_stamp();
 	wait_action(time_stamp(), philo->args->time_sleep);
-	// pthread_mutex_unlock(&philo->args->print);
 }
 
 void	think_function(t_philos *philo)
 {
-	// pthread_mutex_lock(&philo->args->print);
-	// printf("%lld\t %d\tis thinking\n", \
-	// time_stamp() - philo->args->init_time, philo->id);
 	action_print(philo, "is thinking");
-	
-	// pthread_mutex_unlock(&philo->args->print);
 }
 
 int	check_nb_eat(t_philos *head)
@@ -114,34 +99,3 @@ int	check_is_dead(t_philos *philo, int i)
 	}
 	return (1);
 }
-
-// void	check_is_dead(t_philos *philo)
-// {
-// 	t_philos	*tmp;
-// 	int			i;
-
-// 	tmp = philo;
-// 	i = 0;
-// 	while (1)
-// 	{
-// 		usleep(1000);
-// 		// stay();
-// 		i = 0;
-
-// 		while (i < philo->args->nb_philo)
-// 		{
-// 			if (check_nb_eat(philo))
-// 				return ;
-// 			if (time_stamp() - tmp->tlast_eat > tmp->args->time_die)
-// 			{
-// 				pthread_mutex_lock(&tmp->print);
-// 				printf("%lld\t %d\tdied\n", \
-// 				time_stamp() - tmp->args->init_time, tmp->id);
-// 				// pthread_mutex_unlock(&philo->print);
-// 				return ;
-// 			}
-// 			tmp = tmp->next;
-// 			i++;
-// 		}
-// 	}
-// }
