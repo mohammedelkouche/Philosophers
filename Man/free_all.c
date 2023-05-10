@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 15:14:36 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/09 17:10:57 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:14:32 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,14 @@ void	free_all(t_philos *philo)
 	test = philo;
 	free(test->args);
 	tmp = philo;
+	pthread_mutex_destroy(&tmp->args->mt_eat);
+	pthread_mutex_destroy(&tmp->args->print);
 	while (i < tmp->args->nb_philo)
 	{
 		pthread_mutex_lock(&tmp->ml_eat);
-		// pthread_mutex_destroy(&tmp->ml_eat);
+		pthread_mutex_destroy(&tmp->ml_eat);
+		pthread_mutex_destroy(&tmp->mt_count);
+		pthread_mutex_destroy(&tmp->fork);
 		next = tmp->next;
 		free(tmp);
 		i++;

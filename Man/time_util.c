@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:21:23 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/09 11:52:58 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:47:34 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	wait_action(long long begin, int action)
 {
 	while (time_stamp() - begin < action)
-		usleep(500);
+		usleep(300);
 }
 
 long long	time_stamp(void)

@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:03:31 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/08 17:40:22 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:37:36 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,11 @@ void	init_thread(t_philos *head, t_info *info)
 		pthread_detach(tmp->thread);
 		tmp = tmp->next;
 	}
-	// i = -1;
-	// while (++i < info->nb_philo)
-	// {
-	// 	pthread_detach(tmp->thread);
-	// 	tmp = tmp->next;
-	// }
 	while (1)
 	{
 		i = 0;
-		usleep(1000);
+		usleep(500);
 		if (!check_is_dead(head, i))
 			break ;
 	}
 }
-
-
