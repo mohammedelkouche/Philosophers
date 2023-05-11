@@ -6,23 +6,17 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:50:19 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/08 18:36:42 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:40:38 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-// void	tst(void)
-// {
-// 	system("leaks philosophers");
-// }
 
 int	main(int argc, char **argv)
 {
 	t_info		*info;
 	t_philos	*head;
 
-	// atexit(tst);
 	head = NULL;
 	info = malloc(sizeof(t_info));
 	if (argc == 6 || argc == 5)
@@ -33,15 +27,8 @@ int	main(int argc, char **argv)
 			free(info);
 			return (0);
 		}
-	head = create_list(head, info);
-	init_thread(head, info);
-	// while(head)
-	// {
-	// 	printf("%d\t", head->id);
-	// 	head = head->next;
-	// 	if(head->id == 1)
-	// 		break;
-	// }
+		head = create_list(head, info);
+		init_thread(head, info);
 	}
 	else
 		printf("error\n");

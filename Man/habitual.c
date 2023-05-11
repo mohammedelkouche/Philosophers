@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:32:40 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/10 15:36:27 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:54:35 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,14 @@ void	eat_function(t_philos *philo)
 	action_print(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->next->fork);
 	action_print(philo, "has taken a fork");
-	
 	action_print(philo, "is eating");
-	
 	wait_action(time_stamp(), philo->args->time_eat);
-	
 	pthread_mutex_lock(&philo->ml_eat);
 	philo->tlast_eat = time_stamp();
 	pthread_mutex_unlock(&philo->ml_eat);
-	
 	pthread_mutex_lock(&philo->mt_count);
 	philo->count_eat++;
 	pthread_mutex_unlock(&philo->mt_count);
-	
 	pthread_mutex_unlock(&philo->fork);
 	pthread_mutex_unlock(&philo->next->fork);
 }
@@ -78,6 +73,7 @@ int	check_is_dead(t_philos *philo, int i)
 
 	while (i < philo->args->nb_philo)
 	{
+		usleep(1000);
 		if (check_nb_eat(philo))
 		{
 			free_all(philo);
@@ -99,5 +95,3 @@ int	check_is_dead(t_philos *philo, int i)
 	}
 	return (1);
 }
-
-

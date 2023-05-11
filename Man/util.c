@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:50:55 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/07 18:21:43 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:41:18 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ t_philos	*ft_lstnew(int id, t_info *info)
 	new_node->count_eat = 0;
 	return (new_node);
 }
-
 
 void	ft_lst_addback(t_philos **head, t_philos *new)
 {

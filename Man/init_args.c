@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:03:31 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/10 18:37:36 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:12:58 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	init_thread(t_philos *head, t_info *info)
 
 	i = -1;
 	tmp = head;
-
 	tmp->args->init_time = time_stamp();
 	pthread_mutex_init(&tmp->args->mt_eat, NULL);
 	pthread_mutex_init(&tmp->args->print, NULL);
@@ -69,7 +68,6 @@ void	init_thread(t_philos *head, t_info *info)
 	while (1)
 	{
 		i = 0;
-		usleep(500);
 		if (!check_is_dead(head, i))
 			break ;
 	}
