@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:32:40 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/11 21:54:35 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/12 12:58:00 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	check_is_dead(t_philos *philo, int i)
 
 	while (i < philo->args->nb_philo)
 	{
-		usleep(1000);
+		usleep(900);
 		if (check_nb_eat(philo))
 		{
 			free_all(philo);
