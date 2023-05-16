@@ -6,7 +6,7 @@
 #    By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/08 14:51:37 by mel-kouc          #+#    #+#              #
-#    Updated: 2023/05/10 18:38:39 by mel-kouc         ###   ########.fr        #
+#    Updated: 2023/05/16 22:00:45 by mel-kouc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ OSRC = $(SRC:.c=.o)
 CC = cc
 
 CFLAGS =   -Wall -Wextra -Werror 
+#-fsanitize=address
 #  -g -fsanitize=thread
 
 
