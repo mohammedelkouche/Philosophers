@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:03:31 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/16 21:59:13 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:00:01 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	init_thread(t_philos *head, t_info *info)
 	while (1)
 	{
 		i = 0;
-		if (!check_is_dead(head, i))
+		if (!check_is_dead(head, i, info))
 			break ;
 	}
 }

@@ -6,13 +6,13 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 15:14:36 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/16 22:00:25 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/17 15:58:09 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	free_all(t_philos *philo)
+void	free_all(t_philos *philo, t_info *info)
 {
 	t_philos	*tmp;
 	t_philos	*next;
@@ -20,7 +20,7 @@ void	free_all(t_philos *philo)
 	tmp = philo;
 	pthread_mutex_destroy(&tmp->args->mt_eat);
 	pthread_mutex_destroy(&tmp->args->print);
-	free(tmp->args);
+	free(info);
 	while (tmp)
 	{
 		pthread_mutex_lock(&tmp->ml_eat);

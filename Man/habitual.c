@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:32:40 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/12 17:18:37 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/17 15:57:41 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	check_nb_eat(t_philos *head)
 	return (1);
 }
 
-int	check_is_dead(t_philos *philo, int i)
+int	check_is_dead(t_philos *philo, int i, t_info *info)
 {
 	long long	t;
 
@@ -76,7 +76,7 @@ int	check_is_dead(t_philos *philo, int i)
 		usleep(900);
 		if (check_nb_eat(philo))
 		{
-			free_all(philo);
+			free_all(philo, info);
 			return (0);
 		}
 		pthread_mutex_lock(&philo->ml_eat);
@@ -87,7 +87,7 @@ int	check_is_dead(t_philos *philo, int i)
 			pthread_mutex_lock(&philo->args->print);
 			printf("%lld\t %d\tdied\n", \
 			time_stamp() - philo->args->init_time, philo->id);
-			free_all(philo);
+			free_all(philo, info);
 			return (0);
 		}
 		philo = philo->next;

@@ -6,7 +6,7 @@
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 14:14:49 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/11 10:50:34 by mel-kouc         ###   ########.fr       */
+/*   Updated: 2023/05/17 15:58:49 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void		think_function(t_philos *philo);
 long long	time_stamp(void);
 void		action_print(t_philos *philo, char *str);
 void		wait_action(long long begin, int action);
-int			check_is_dead(t_philos *philo, int i);
+int			check_is_dead(t_philos *philo, int i, t_info *info);
 int			check_nb_eat(t_philos *head);
 void		stay(void);
-void		free_all(t_philos *philo);
+void		free_all(t_philos *philo, t_info *info);
 
 #endif
